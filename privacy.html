@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="favicon.ico"/>
+<link rel="apple-touch-icon" href="favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — BoltJSON</title>
+  <meta name="description" content="BoltJSON Privacy Policy. We collect no personal data. All processing happens locally in your browser. Your files never leave your device."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<canvas id="canvas" aria-hidden="true"></canvas>
+
+<header id="topbar">
+  <a id="logo" href="index.html">
+    <svg id="logo-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect width="28" height="28" rx="6" fill="currentColor" opacity=".15"/>
+      <path d="M7 20l4-12h2.5l2 7 2-4h2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="21" cy="19" r="2.2" fill="currentColor"/>
+    </svg>
+    <span id="logo-name">Bolt<b>JSON</b></span>
+  </a>
+  <div id="tb-gap"></div>
+  <a id="hub-link" href="https://runtime-hub.com/" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <circle cx="8" cy="8" r="6.5"/>
+      <path d="M8 1.5C8 1.5 5.5 4.5 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4.5 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+    </svg>
+    Hub
+  </a>
+</header>
+
+<main class="page">
+  <h1>Privacy <span>Policy</span></h1>
+  <p class="page-meta">Effective date: January 1, 2026</p>
+
+  <div class="info-box">
+    BoltJSON processes all files locally in your browser.<br/>
+    Your JSON data is never uploaded to any server.<br/>
+    We do not collect, store, or sell personal data.
+  </div>
+
+  <h2>1. Overview</h2>
+  <p>This Privacy Policy describes how RuntimeZero ("we", "us") handles information when you use BoltJSON, accessible at runtime-hub.com. We are committed to protecting your privacy and ensuring full transparency.</p>
+
+  <h2>2. Information we do not collect</h2>
+  <p>BoltJSON is designed with privacy as a core principle. Specifically:</p>
+  <ul>
+    <li>We do <strong>not</strong> receive, process, or store any files you open in BoltJSON.</li>
+    <li>We do <strong>not</strong> collect your name, email address, or any personally identifiable information.</li>
+    <li>We do <strong>not</strong> use advertising trackers, third-party analytics SDKs, or session-replay tools.</li>
+    <li>We do <strong>not</strong> sell your data to third parties.</li>
+  </ul>
+
+  <h2>3. Local processing</h2>
+  <p>All file parsing is performed entirely within your browser using JavaScript. Files are loaded into browser memory only, processed locally, and displayed on screen. When you close the tab or refresh, all data is discarded automatically.</p>
+
+  <h2>4. Cookies and storage</h2>
+  <p>BoltJSON does not set any first-party cookies. We do not use localStorage, IndexedDB, or any persistent browser storage to save your files or session data.</p>
+
+  <h2>5. Analytics</h2>
+  <p>We may collect basic, anonymised, aggregated analytics such as page views and browser type through privacy-respecting tools that do not track individual users and do not use cookies. This data cannot be used to identify you.</p>
+
+  <h2>6. Third-party services</h2>
+  <p>BoltJSON loads fonts from Google Fonts over HTTPS. This may transmit your IP address to Google as part of the CDN request. Refer to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a> for details.</p>
+
+  <h2>7. Children's privacy</h2>
+  <p>BoltJSON is not directed at children under the age of 13. We do not knowingly collect personal information from children.</p>
+
+  <h2>8. Changes to this policy</h2>
+  <p>We may update this policy from time to time. We will post the updated version on this page with a new effective date. Continued use of the service constitutes acceptance.</p>
+
+  <h2>9. Contact</h2>
+  <p>Questions about this Privacy Policy: <a href="mailto:privacy@runtime-hub.com">privacy@runtime-hub.com</a></p>
+</main>
+
+<footer id="footer">
+  <span id="footer-copy">&copy; 2026 <strong>RuntimeHub</strong> by RuntimeZero. All rights reserved.</span>
+  <div id="footer-sp"></div>
+  <nav id="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<script>
+(function(){
+  var c=document.getElementById('canvas'),ctx=c.getContext('2d'),dots=[],W,H;
+  function build(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;dots=[];for(var r=0;r*38<=H+38;r++)for(var col=0;col*38<=W+38;col++)dots.push({x:col*38,y:r*38,a:.06+Math.random()*.07,p:Math.random()*Math.PI*2,s:.0005+Math.random()*.0004});}
+  function draw(ts){ctx.clearRect(0,0,W,H);dots.forEach(function(d){var a=d.a+Math.sin(ts*d.s+d.p)*.04;ctx.beginPath();ctx.arc(d.x,d.y,1,0,Math.PI*2);ctx.fillStyle='rgba(245,166,35,'+a+')';ctx.fill();});requestAnimationFrame(draw);}
+  window.addEventListener('resize',build);build();requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>

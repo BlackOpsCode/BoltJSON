@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="favicon.ico"/>
+<link rel="apple-touch-icon" href="favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Service — BoltJSON</title>
+  <meta name="description" content="BoltJSON Terms of Service. Free to use, no warranty. All processing is local."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<canvas id="canvas" aria-hidden="true"></canvas>
+
+<header id="topbar">
+  <a id="logo" href="index.html">
+    <svg id="logo-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect width="28" height="28" rx="6" fill="currentColor" opacity=".15"/>
+      <path d="M7 20l4-12h2.5l2 7 2-4h2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="21" cy="19" r="2.2" fill="currentColor"/>
+    </svg>
+    <span id="logo-name">Bolt<b>JSON</b></span>
+  </a>
+  <div id="tb-gap"></div>
+  <a id="hub-link" href="https://runtime-hub.com/" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <circle cx="8" cy="8" r="6.5"/>
+      <path d="M8 1.5C8 1.5 5.5 4.5 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4.5 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+    </svg>
+    Hub
+  </a>
+</header>
+
+<main class="page">
+  <h1>Terms of <span>Service</span></h1>
+  <p class="page-meta">Effective date: January 1, 2026</p>
+
+  <h2>1. Acceptance of terms</h2>
+  <p>By accessing or using BoltJSON ("the Service"), you agree to be bound by these Terms of Service. If you do not agree, please do not use the Service.</p>
+
+  <h2>2. Description of service</h2>
+  <p>BoltJSON is a browser-based tool for parsing, inspecting, and exploring JSON files locally on your device. The Service is provided by RuntimeZero and accessible through runtime-hub.com.</p>
+
+  <h2>3. Use of the service</h2>
+  <p>You may use BoltJSON for personal or commercial purposes, subject to the following restrictions. You agree not to:</p>
+  <ul>
+    <li>Use the Service for any unlawful purpose or in violation of any applicable laws.</li>
+    <li>Attempt to reverse-engineer or extract the engine for redistribution without permission.</li>
+    <li>Use automated means to overload the service infrastructure.</li>
+    <li>Misrepresent the origin of the tool in redistributed or derivative products.</li>
+  </ul>
+
+  <h2>4. Intellectual property</h2>
+  <p>The BoltJSON name, logo, design, and source code are the property of RuntimeZero. The engine is licensed under the MIT License unless otherwise stated in the source repository.</p>
+
+  <h2>5. Disclaimer of warranties</h2>
+  <p>The Service is provided "as is" and "as available" without any warranty of any kind, express or implied. We do not warrant that the Service will be error-free, uninterrupted, or that results obtained will be accurate or reliable.</p>
+
+  <h2>6. Limitation of liability</h2>
+  <p>To the fullest extent permitted by applicable law, RuntimeZero shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Service.</p>
+
+  <h2>7. Privacy</h2>
+  <p>Your use of the Service is also governed by our <a href="privacy.html">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+
+  <h2>8. Changes to terms</h2>
+  <p>We reserve the right to modify these Terms at any time. Updated Terms will be posted on this page with a new effective date. Continued use of the Service after changes constitutes acceptance.</p>
+
+  <h2>9. Governing law</h2>
+  <p>These Terms are governed by the laws of the jurisdiction in which RuntimeZero is registered, without regard to conflict of law principles.</p>
+
+  <h2>10. Contact</h2>
+  <p>Questions about these Terms: <a href="mailto:legal@runtime-hub.com">legal@runtime-hub.com</a></p>
+</main>
+
+<footer id="footer">
+  <span id="footer-copy">&copy; 2026 <strong>RuntimeHub</strong> by RuntimeZero. All rights reserved.</span>
+  <div id="footer-sp"></div>
+  <nav id="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</footer>
+
+<script>
+(function(){
+  var c=document.getElementById('canvas'),ctx=c.getContext('2d'),dots=[],W,H;
+  function build(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;dots=[];for(var r=0;r*38<=H+38;r++)for(var col=0;col*38<=W+38;col++)dots.push({x:col*38,y:r*38,a:.06+Math.random()*.07,p:Math.random()*Math.PI*2,s:.0005+Math.random()*.0004});}
+  function draw(ts){ctx.clearRect(0,0,W,H);dots.forEach(function(d){var a=d.a+Math.sin(ts*d.s+d.p)*.04;ctx.beginPath();ctx.arc(d.x,d.y,1,0,Math.PI*2);ctx.fillStyle='rgba(245,166,35,'+a+')';ctx.fill();});requestAnimationFrame(draw);}
+  window.addEventListener('resize',build);build();requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>

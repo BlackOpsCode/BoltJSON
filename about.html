@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="favicon.ico"/>
+<link rel="apple-touch-icon" href="favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About BoltJSON — Why We Built It</title>
+  <meta name="description" content="BoltJSON exists because working with JSON shouldn't require uploading your data to a stranger's server or writing a script every time. Read our story."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<canvas id="canvas" aria-hidden="true"></canvas>
+
+<header id="topbar">
+  <a id="logo" href="index.html">
+    <svg id="logo-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect width="28" height="28" rx="6" fill="currentColor" opacity=".15"/>
+      <path d="M7 20l4-12h2.5l2 7 2-4h2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="21" cy="19" r="2.2" fill="currentColor"/>
+    </svg>
+    <span id="logo-name">Bolt<b>JSON</b></span>
+  </a>
+  <div id="tb-gap"></div>
+  <a id="hub-link" href="https://runtime-hub.com/" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <circle cx="8" cy="8" r="6.5"/>
+      <path d="M8 1.5C8 1.5 5.5 4.5 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4.5 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+    </svg>
+    Hub
+  </a>
+</header>
+
+<main class="page">
+  <h1>Why we built <span>BoltJSON</span></h1>
+  <p class="page-meta">A tool built from a daily frustration — and a belief that your data should stay yours.</p>
+
+  <p>JSON is everywhere. It comes from APIs, databases, internal tools, third-party exports, event logs, configuration systems. Everyone who works in tech deals with it constantly — engineers, data people, IT, QA, analysts. Every week, multiple times.</p>
+
+  <p>And yet every time you receive a JSON you haven't seen before, the process is more painful than it needs to be. You paste it into a basic formatter that shows you raw text, or you write a quick script you have to rewrite every time, or you upload it to some online tool — hoping the file isn't sensitive, hoping the service doesn't log your data, hoping it handles your file size.</p>
+
+  <p>BoltJSON exists to remove that friction.</p>
+
+  <h2>What we believe</h2>
+
+  <p><strong style="color:var(--text)">Your data belongs to you.</strong> When you're inspecting a JSON from a production system, an internal API, or a client dataset, the last thing you should have to think about is where that data is going. BoltJSON processes everything in your browser. Nothing is uploaded. Nothing is logged. Nothing leaves your device. That's not a feature — it's a baseline.</p>
+
+  <p><strong style="color:var(--text)">Understanding data should be instant.</strong> The first question anyone has when they open a JSON is: what's in here? BoltJSON answers that immediately — every column, every type, how complete each field is, what the actual values look like. Before you write a single line of code.</p>
+
+  <p><strong style="color:var(--text)">Getting to the data you need shouldn't require programming.</strong> Filtering rows, hiding columns, searching for a specific value, exporting a clean subset — these are basic operations that currently require a script if your data is in JSON. BoltJSON makes them visual, fast, and accessible to anyone.</p>
+
+  <h2>Who this is for</h2>
+
+  <p>BoltJSON is for anyone who regularly encounters JSON data and needs to make sense of it quickly. Backend engineers reviewing API responses. Data engineers checking pipeline outputs. DevOps teams auditing configuration exports. QA engineers inspecting test payloads. Analysts who need data in a spreadsheet but received a JSON file.</p>
+
+  <p>You don't need to be a developer to use it. You just need a browser and a JSON.</p>
+
+  <h2>What's next</h2>
+
+  <p>BoltJSON is the first tool in the RuntimeHub suite. We're building a set of local-first tools for people who work with data — fast, private, no account required. More features are coming: joining files, deeper transformations, more export formats. Everything local by default.</p>
+
+  <p>If you use BoltJSON and have feedback, we'd like to hear it at <a href="mailto:hello@runtime-hub.com">hello@runtime-hub.com</a>.</p>
+</main>
+
+<footer id="footer">
+  <span id="footer-copy">&copy; 2026 <strong>RuntimeHub</strong> by RuntimeZero. All rights reserved.</span>
+  <div id="footer-sp"></div>
+  <nav id="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<script>
+(function(){
+  var c=document.getElementById('canvas'),ctx=c.getContext('2d'),dots=[],W,H;
+  function build(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;dots=[];for(var r=0;r*38<=H+38;r++)for(var col=0;col*38<=W+38;col++)dots.push({x:col*38,y:r*38,a:.06+Math.random()*.07,p:Math.random()*Math.PI*2,s:.0005+Math.random()*.0004});}
+  function draw(ts){ctx.clearRect(0,0,W,H);dots.forEach(function(d){var a=d.a+Math.sin(ts*d.s+d.p)*.04;ctx.beginPath();ctx.arc(d.x,d.y,1,0,Math.PI*2);ctx.fillStyle='rgba(245,166,35,'+a+')';ctx.fill();});requestAnimationFrame(draw);}
+  window.addEventListener('resize',build);build();requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
